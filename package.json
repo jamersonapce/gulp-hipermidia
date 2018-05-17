@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jamersonapce/gulp-hipermidia#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
     "gulp-imagemin": "^4.1.0"
   }
 }
