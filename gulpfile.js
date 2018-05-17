@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const clean = require('gulp-clean');
+const concat = require('gulp-concat');
 
 
 
@@ -20,3 +21,11 @@ gulp.task('build-img', ['copy'], function() {
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img'));
 });
+
+gulp.task('merge-css', function() {
+    gulp.src(['dist/css/normalize.min.css',
+        'src/css/bootstrap.min.css',
+        'src/css/global.css'])
+        .pipe(concat('site.css') )
+        .pipe(gulp.dest('dist/css') );
+}
