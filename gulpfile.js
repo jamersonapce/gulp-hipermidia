@@ -25,7 +25,7 @@ gulp.task('build-img', ['copy'], function() {
 });
 
 gulp.task('merge-css', function() {
-    gulp.src(['dist/css/normalize.min.css',
+    gulp.src(['src/css/normalize.min.css',
         'src/css/bootstrap.min.css',
         'src/css/global.css',
         'src/css/video.css',
@@ -51,10 +51,8 @@ gulp.task('merge-js', function() {
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('cssmin', function(){
-    gulp.src('dist/**/*.html')
-        .pipe(cssmin({
-            'css': [cssmin]
-        }))
+gulp.task('min-css', function(){
+    gulp.src('dist/**/*.css')
+        .pipe(cssmin())
         .pipe(gulp.dest('dist'));
 });
