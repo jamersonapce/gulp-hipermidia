@@ -9,6 +9,7 @@ const cssmin = require('gulp-cssmin');
 const browserSync = require('browser-sync');
 const jshint = require('gulp-jshint');
 const jshintStylish = require('jshint-stylish');
+const csslint = require('gulp-csslint');
 
 
 gulp.task('copy', ['clean'], function() {
@@ -69,6 +70,12 @@ gulp.task('server', function() {
     });
 
     gulp.watch('src/**/*').on('change', browserSync.reload);
+
+    gulp.watch('src/css/**/*.css').on('change', function(event) {
+        gulp.src(event.path)
+            .pipe(csslint())
+            .pipe(csslint.formatter());
+    });
 
     gulp.watch('src/js/**/*.js').on('change', function(event) {
 
