@@ -4,7 +4,7 @@ const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const htmlReplace = require('gulp-html-replace');
-
+const uglify = require('gulp-uglify');
 
 
 gulp.task('copy', ['clean'], function() {
@@ -40,4 +40,13 @@ gulp.task('html-replace', function() {
     gulp.src('src/**/*.html')
         .pipe(htmlReplace({css:'css/site.css'}) )
         .pipe(gulp.dest('dist') );
+});
+
+gulp.task('merge-js', function() {
+    gulp.src(['src/js/jquery-3.3.1.min.js',
+        'src/js/jquery.mb.YTPlayer.js',
+        'src/js/global.js'])
+        .pipe(concat('site.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
 });
