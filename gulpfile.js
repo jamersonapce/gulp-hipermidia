@@ -25,7 +25,10 @@ gulp.task('build-img', ['copy'], function() {
 gulp.task('merge-css', function() {
     gulp.src(['dist/css/normalize.min.css',
         'src/css/bootstrap.min.css',
-        'src/css/global.css'])
+        'src/css/global.css',
+        'src/css/video.css',
+        'src/css/section.css',
+        'src/css/footer.css'])
         .pipe(concat('site.css') )
         .pipe(gulp.dest('dist/css') );
-}
+});
