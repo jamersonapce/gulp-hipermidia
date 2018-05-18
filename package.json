@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jamersonapce/gulp-hipermidia#readme",
   "devDependencies": {
+    "browser-sync": "^2.24.4",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^3.9.4",

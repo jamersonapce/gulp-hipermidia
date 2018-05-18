@@ -6,6 +6,7 @@ const cleanCSS = require('gulp-clean-css');
 const htmlReplace = require('gulp-html-replace');
 const uglify = require('gulp-uglify');
 const cssmin = require('gulp-cssmin');
+const browserSync = require('browser-sync');
 
 gulp.task('copy', ['clean'], function() {
 
@@ -55,4 +56,13 @@ gulp.task('min-css', function(){
     gulp.src('dist/**/*.css')
         .pipe(cssmin())
         .pipe(gulp.dest('dist'));
+});
+
+gulp.task('server', function() {
+    browserSync.init({
+        server: {
+            baseDir: 'src'
+        }
+    });
+    gulp.watch('src/**/*').on('change', browserSync.reload);
 });
