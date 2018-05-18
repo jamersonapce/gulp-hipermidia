@@ -5,7 +5,7 @@ const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const htmlReplace = require('gulp-html-replace');
 const uglify = require('gulp-uglify');
-
+const cssmin = require('gulp-cssmin');
 
 gulp.task('copy', ['clean'], function() {
 
@@ -38,7 +38,7 @@ gulp.task('merge-css', function() {
 
 gulp.task('html-replace', function() {
     gulp.src('src/**/*.html')
-        .pipe(htmlReplace({css:'css/site.css'}) )
+        .pipe(htmlReplace({css:'css/site.css', js: 'js/site.js'}) )
         .pipe(gulp.dest('dist') );
 });
 
@@ -49,4 +49,12 @@ gulp.task('merge-js', function() {
         .pipe(concat('site.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('cssmin', function(){
+    gulp.src('dist/**/*.html')
+        .pipe(cssmin({
+            'css': [cssmin]
+        }))
+        .pipe(gulp.dest('dist'));
 });
