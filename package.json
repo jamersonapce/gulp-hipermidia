@@ -29,6 +29,7 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-jshint": "^2.1.0",
     "gulp-uglify": "^3.0.0",
+    "gulp-zip": "^4.1.0",
     "jshint-stylish": "^2.2.1"
   }
 }

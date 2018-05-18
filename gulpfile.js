@@ -10,6 +10,7 @@ const browserSync = require('browser-sync');
 const jshint = require('gulp-jshint');
 const jshintStylish = require('jshint-stylish');
 const csslint = require('gulp-csslint');
+const zip = require('gulp-zip');
 
 
 gulp.task('copy', ['clean'], function() {
@@ -84,4 +85,10 @@ gulp.task('server', function() {
             .pipe(jshint.reporter(jshintStylish));
     });
 
+});
+
+gulp.task('zip', function(){
+    gulp.src('dist/**/*')
+        .pipe(zip('projeto.zip'))
+        .pipe(gulp.dest('dist'))
 });
