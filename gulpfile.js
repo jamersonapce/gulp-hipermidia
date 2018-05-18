@@ -8,6 +8,7 @@ const uglify = require('gulp-uglify');
 const cssmin = require('gulp-cssmin');
 const browserSync = require('browser-sync');
 
+
 gulp.task('copy', ['clean'], function() {
 
     return gulp.src('src/img/**/*')
@@ -64,5 +65,7 @@ gulp.task('server', function() {
             baseDir: 'src'
         }
     });
+
     gulp.watch('src/**/*').on('change', browserSync.reload);
+
 });
