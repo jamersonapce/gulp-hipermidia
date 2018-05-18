@@ -7,6 +7,8 @@ const htmlReplace = require('gulp-html-replace');
 const uglify = require('gulp-uglify');
 const cssmin = require('gulp-cssmin');
 const browserSync = require('browser-sync');
+const jshint = require('gulp-jshint');
+const jshintStylish = require('jshint-stylish');
 
 
 gulp.task('copy', ['clean'], function() {
@@ -67,5 +69,12 @@ gulp.task('server', function() {
     });
 
     gulp.watch('src/**/*').on('change', browserSync.reload);
+
+    gulp.watch('src/js/**/*.js').on('change', function(event) {
+
+        gulp.src(event.path)
+            .pipe(jshint())
+            .pipe(jshint.reporter(jshintStylish));
+    });
 
 });
